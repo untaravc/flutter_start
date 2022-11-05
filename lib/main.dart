@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Main App'),
+          title: Text('List view'),
         ),
         body: Home(),
       ),
@@ -26,9 +26,13 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Center(
-        child: Text('Home'),
+    return ListView.builder(
+      itemCount: 20,
+      itemBuilder: (context, index) => ListTile(
+        title: Text('Item $index'),
+        subtitle: Text('Sub item $index'),
+        leading: Icon(Icons.ac_unit),
+        trailing: Icon(Icons.access_alarm),
       ),
     );
   }
