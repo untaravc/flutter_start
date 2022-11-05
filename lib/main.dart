@@ -16,10 +16,25 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: Text('My App'),
         ),
-        body: Center(
-          child: Text(
-            'Hello World',
-            style: TextStyle(color: Colors.white),
+        body: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Center(
+            child: Text(
+              'Hello World 123456',
+              // maxLines: 2,
+              // overflow: TextOverflow.ellipsis,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  fontSize: 50,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                  backgroundColor: Colors.amber,
+                  // fontFamily: 'Poppins',
+                  // fontFamily: 'Nunito',
+                  fontFamily: 'Roboto',
+                  decoration: TextDecoration.underline,
+                  letterSpacing: 2.0),
+            ),
           ),
         ),
       ),
