@@ -22,14 +22,61 @@ class MyApp extends StatelessWidget {
 }
 
 class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
+  Home({Key? key}) : super(key: key);
+
+  final List<Map<String, dynamic>> myList = [
+    {
+      "name": "untara",
+      'age': 26,
+      'favColor': ['green', 'blue', 'cyan'],
+    },
+    {
+      "name": "untara",
+      'age': 26,
+      'favColor': [
+        'green',
+        'blue',
+        'cyan',
+        'green',
+        'blue',
+        'cyan',
+        'green',
+        'blue',
+        'cyan',
+        'green',
+        'blue',
+        'cyan',
+      ],
+    },
+    {
+      "name": "untara",
+      'age': 26,
+      'favColor': ['green', 'blue', 'cyan'],
+    }
+  ];
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Center(
-        child: Text('Home'),
-      ),
+    return ListView.builder(
+      itemCount: myList.length,
+      itemBuilder: (context, index) {
+        List favColor = myList[index]['favColor'];
+        return ListTile(
+          title: Text(myList[index]['name']),
+          subtitle: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+                children: favColor.map((color) {
+              return Container(
+                height: 20,
+                width: 50,
+                child: Text(color),
+                color: Colors.blue,
+              );
+            }).toList()),
+          ),
+        );
+      },
     );
   }
 }
