@@ -27,8 +27,19 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Center(
-        child: Text('Home'),
+      child: Padding(
+        padding: const EdgeInsets.all(40),
+        child: Container(
+          width: 300,
+          height: 500,
+          color: Colors.amber,
+          // child: Image(image: AssetImage('assets/images/test.png')),
+          // child: Image(
+          //   fit: BoxFit.contain,
+          //   image: NetworkImage('https://picsum.photos/250?image=9'),
+          // ),
+          child: Image.network('https://picsum.photos/250?image=9'),
+        ),
       ),
     );
   }
