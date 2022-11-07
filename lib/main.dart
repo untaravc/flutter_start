@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Main App'),
+          title: Text('Text Field'),
         ),
         body: Home(),
       ),
@@ -28,7 +28,13 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Center(
-        child: Text('Home'),
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: TextField(
+            obscureText: false,
+            keyboardType: TextInputType.phone,
+          ),
+        ),
       ),
     );
   }
