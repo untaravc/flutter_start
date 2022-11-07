@@ -33,6 +33,18 @@ class Home extends StatelessWidget {
           child: TextField(
             obscureText: false,
             keyboardType: TextInputType.phone,
+            showCursor: true,
+            textAlign: TextAlign.left,
+            decoration: InputDecoration(
+                icon: Icon(
+                  Icons.person,
+                  size: 12.0,
+                ),
+                labelText: "Nama",
+                // border: OutlineInputBorder(),
+                focusedBorder: OutlineInputBorder(),
+                hintText: "Nama kamu siapa?",
+                hintStyle: TextStyle(color: Colors.grey)),
           ),
         ),
       ),
