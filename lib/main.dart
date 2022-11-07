@@ -21,8 +21,15 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
+class Home extends StatefulWidget {
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  final TextEditingController name = TextEditingController();
+
+  String hasilInput = 'hasil';
 
   @override
   Widget build(BuildContext context) {
@@ -30,21 +37,36 @@ class Home extends StatelessWidget {
       child: Center(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
-          child: TextField(
-            obscureText: false,
-            keyboardType: TextInputType.phone,
-            showCursor: true,
-            textAlign: TextAlign.left,
-            decoration: InputDecoration(
-                icon: Icon(
-                  Icons.person,
-                  size: 12.0,
-                ),
-                labelText: "Nama",
-                // border: OutlineInputBorder(),
-                focusedBorder: OutlineInputBorder(),
-                hintText: "Nama kamu siapa?",
-                hintStyle: TextStyle(color: Colors.grey)),
+          child: Column(
+            children: [
+              TextField(
+                controller: TextEditingController(text: "Initial name"),
+                onChanged: (val) {},
+                onSubmitted: (val) {
+                  setState(() {
+                    hasilInput = val;
+                  });
+                },
+                onEditingComplete: () {
+                  print(name.text);
+                },
+                obscureText: false,
+                keyboardType: TextInputType.phone,
+                showCursor: true,
+                textAlign: TextAlign.left,
+                decoration: InputDecoration(
+                    icon: Icon(
+                      Icons.person,
+                      size: 12.0,
+                    ),
+                    labelText: "Nama",
+                    // border: OutlineInputBorder(),
+                    focusedBorder: OutlineInputBorder(),
+                    hintText: "Nama kamu siapa?",
+                    hintStyle: TextStyle(color: Colors.grey)),
+              ),
+              Text(hasilInput),
+            ],
           ),
         ),
       ),
