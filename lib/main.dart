@@ -27,9 +27,56 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Center(
-        child: Text('Home'),
-      ),
-    );
+        child: ListView.builder(
+            itemCount: 10,
+            itemBuilder: ((context, index) {
+              return Dismissible(
+                key: Key(index.toString()),
+                direction: DismissDirection.endToStart,
+                onDismissed: (direction) {
+                  if (direction == DismissDirection.endToStart) {
+                    print('end to start ');
+                  }
+                },
+                confirmDismiss: (direction) {
+                  return showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AlertDialog(
+                          title: Text('Confirm delete.'),
+                          content: Text('Are your sure?'),
+                          actions: [
+                            ElevatedButton(
+                                onPressed: () {
+                                  Navigator.of(context).pop(true);
+                                },
+                                child: Text('Yes')),
+                            ElevatedButton(
+                                onPressed: () {
+                                  Navigator.of(context).pop(false);
+                                },
+                                child: Text('No'))
+                          ],
+                        );
+                      });
+                },
+                background: Container(
+                  color: Colors.red,
+                  child: Icon(
+                    Icons.delete,
+                    color: Colors.white,
+                  ),
+                  alignment: Alignment.centerRight,
+                  padding: EdgeInsets.only(right: 10),
+                ),
+                child: ListTile(
+                  leading: CircleAvatar(
+                    child: Text((index + 1).toString()),
+                  ),
+                  title: Text('Name Orang'),
+                  subtitle: Text('subtitle of name'),
+                ),
+              );
+            })));
   }
 }
