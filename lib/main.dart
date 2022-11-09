@@ -21,14 +21,36 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
 
   @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  bool statusSwitched = false;
+
+  @override
   Widget build(BuildContext context) {
+    print('rendered');
+
     return Container(
         child: Center(
-      child: Text('Hello'),
+      child: Column(
+        children: [
+          Switch(
+            value: statusSwitched,
+            onChanged: (value) {
+              setState(() {
+                statusSwitched = !statusSwitched;
+              });
+              print(statusSwitched);
+            },
+          ),
+          Text(statusSwitched ? 'True' : 'False')
+        ],
+      ),
     ));
   }
 }
