@@ -6,6 +6,7 @@ import 'package:flutter_application_1/page_dua.dart';
 
 class PageSatu extends StatelessWidget {
   const PageSatu({Key? key}) : super(key: key);
+  static const nameRoute = 'page-one';
 
   @override
   Widget build(BuildContext context) {
