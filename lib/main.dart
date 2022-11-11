@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/screens/product_detail_screen.dart';
+import 'package:flutter_application_1/screens/product_overview_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,24 +13,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Main App'),
-        ),
-        body: Home(),
-      ),
+      title: 'myShop',
+      theme: ThemeData(primarySwatch: Colors.indigo, fontFamily: 'Roboto'),
+      initialRoute: ProductOverviewScreen.nameRoute,
+      routes: {
+        ProductOverviewScreen.nameRoute: (context) => ProductOverviewScreen(),
+        ProductDetailScreen.nameRoute: (context) => ProductDetailScreen(),
+      },
     );
-  }
-}
-
-class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        child: Center(
-      child: Text('Hello'),
-    ));
   }
 }
