@@ -14,4 +14,8 @@ class Products with ChangeNotifier {
   List<Product> get allproducts {
     return [..._allproducts];
   }
+
+  Product findById(productId) {
+    return _allproducts.firstWhere((prod) => prod.id == productId);
+  }
 }
